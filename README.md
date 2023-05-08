@@ -6,7 +6,7 @@ First, set up your Go environment. If you need help to do that, you can check th
 
 After started, you will see a message showing you the address where you can see the generated page and interact with it. To finish the execution, just press Ctrl + C on the terminal session or you can just close the terminal.
 
-This project was made with VSCode and utilizes HTML and Go to provide the basic functionality of the resultant page; but it also uses Bootstrap to make everything looks a bit better out of the box. This repo contains all the required sources to work just right after setting the Go environment and running the main.go file.
+This project was made with VSCode and utilizes HTML and Go to provide the basic functionality of the resultant page; but it also uses Bootstrap to make everything look a bit better out of the box. This repo contains all the required sources to work just right after setting the Go environment and running the main.go file.
 
 You can play around with everything. If you got any ideas about how to make this project better; please let me know about them and if you can also share some sources to get information and keep improving my knowledge of GoLang, please let me know about them as well.
 
