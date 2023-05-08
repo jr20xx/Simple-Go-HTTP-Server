@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=>, initial-scale=1.0">
+  <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <title>Home Page</title>
+</head>
+
+<body class="p-3 mb-2 bg-primary-subtle text-emphasis-primary" data-bs-theme="dark">
+
+  <div class="card">
+    <h5 class="card-header lead text-center">Text decoder</h5>
+    <div class="card-body">
+      <form method="post" action="/">
+        <div class="input-group mb-3">
+          <div class="form-floating">
+            <textarea class="form-control" id="key" name="key" placeholder="Key to decode the message"
+              style="height: 150px; max-height: 150px; min-height: 150px;" required></textarea>
+            <label for="key">Key to decode the message:</label>
+          </div>
+
+          <div class="form-floating">
+            <textarea class="form-control" id="encodedMessage" name="encodedMessage" placeholder="Encoded message"
+              style="height: 150px; max-height: 150px; min-height: 150px;" required></textarea>
+            <label for="encodedMessage">Encoded message:</label>
+          </div>
+        </div>
+
+        <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
+          <div class="btn-group me-2" role="group" aria-label="First group">
+            <button class="btn btn-outline-info justify-content-start" type="button" data-bs-toggle="collapse"
+              data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Help</button>
+          </div>
+          <div class="btn-group me-2" role="group" aria-label="First group">
+            <button class="btn btn-outline-secondary" type="reset">Reset</button>
+            <button class="btn btn-outline-success" type="submit">Decode</button>
+          </div>
+        </div>
+        <br>
+        <div class="collapse" id="collapseExample">
+          <div class="card card-body">
+            <p style="text-align: justify;">
+              This web page is served through a very simple implementation of an HTTP server with Go. It is made to
+              explore the communication between Go and a HTML page while resolving a very simple problem.
+              <br><br>
+              <strong><em>The problem is the next one:</em></strong>
+              <br>
+              You got a ciphered message. To decipher it, you must follow the next rules:
+              <br>
+            <ol>
+              <li>Use the first appearance of the 26 lowercased letters of the English alphabet in the key as the order
+                for the substitution table.</li>
+              <li>Align the substitution table with the regular English alphabet.</li>
+              <li>Replace every letter in the ciphered message using the resultant table.</li>
+              <li>Spaces are kept and the resultant message is the decoded message in lower case.</li>
+            </ol>
+            <br>
+            Example:
+            <br>
+            <strong>Key:</strong> The quick brown fox jumps over the lazy dog
+            <br>
+            <strong>Encoded Message:</strong> vkbs bs t suepuv
+            <br>
+            <strong>Decoded Message:</strong> this is a secret
+            </p>
+          </div>
+        </div>
+
+      </form>
+    </div>
+
+    {{if .EmptyKey}}
+    <div class="card-footer text-body-secondary alert alert-danger alert-dismissible fade show" role="alert">
+      Key can not be empty!
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {{else if .EmptyMessage}}
+    <div class="card-footer text-body-secondary alert alert-danger alert-dismissible fade show" role="alert">
+      Message can not be empty!
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {{else if .Message.Valid}}
+    <div class="card-footer text-body-secondary alert alert-success alert-dismissible fade show" role="alert">
+      {{.Message.DecodedMessage}}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {{end}}
+
+  </div>
+</body>
+
+</html>
